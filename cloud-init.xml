@@ -1,0 +1,19 @@
+#cloud-config
+
+package_upgrade: true
+packages:
+ - iotop
+ - htop
+ - bmon
+ - openvpn
+users:
+ - name: plachta
+   sudo: ['ALL=(ALL) NOPASSWD:ALL']
+   groups: sudo
+   ssh-authorized-keys:
+     - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJH0n9cVwtULbgUyige+ogrod2xPm+IOKTccCxzdNmIo macbook;janholcak@gmail.com 
+   shell: /bin/bash
+
+bootcmd:
+  - [bash, /init-container.sh]
+
